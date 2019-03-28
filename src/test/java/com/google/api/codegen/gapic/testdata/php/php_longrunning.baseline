@@ -260,7 +260,7 @@ class OperationsGapicClient
         $request->setName($name);
 
         $requestParams = new RequestParamsHeaderDescriptor([
-          'name' => $request->getName(),
+            'name' => $request->getName(),
         ]);
         $optionalArgs['headers'] = isset($optionalArgs['headers'])
             ? array_merge($requestParams->getHeader(), $optionalArgs['headers'])
@@ -354,7 +354,7 @@ class OperationsGapicClient
         }
 
         $requestParams = new RequestParamsHeaderDescriptor([
-          'name' => $request->getName(),
+            'name' => $request->getName(),
         ]);
         $optionalArgs['headers'] = isset($optionalArgs['headers'])
             ? array_merge($requestParams->getHeader(), $optionalArgs['headers'])
@@ -418,7 +418,7 @@ class OperationsGapicClient
         $request->setName($name);
 
         $requestParams = new RequestParamsHeaderDescriptor([
-          'name' => $request->getName(),
+            'name' => $request->getName(),
         ]);
         $optionalArgs['headers'] = isset($optionalArgs['headers'])
             ? array_merge($requestParams->getHeader(), $optionalArgs['headers'])
@@ -476,7 +476,7 @@ class OperationsGapicClient
         $request->setName($name);
 
         $requestParams = new RequestParamsHeaderDescriptor([
-          'name' => $request->getName(),
+            'name' => $request->getName(),
         ]);
         $optionalArgs['headers'] = isset($optionalArgs['headers'])
             ? array_merge($requestParams->getHeader(), $optionalArgs['headers'])

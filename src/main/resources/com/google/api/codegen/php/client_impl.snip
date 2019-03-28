@@ -394,8 +394,12 @@
 
             @end
             @if @apiMethod.headerRequestParams
-              {@requestParams(apiMethod.headerRequestParams)}
-
+                @if apiMethod.grpcStreamingType.toString == "BidiStreaming"
+                @end
+                @if apiMethod.grpcStreamingType.toString == "ClientStreaming"
+                @else
+                    {@requestParams(apiMethod.headerRequestParams)}
+                @end
             @end
             {@setCall(apiMethod)}
         }
@@ -477,14 +481,15 @@
 @end
 
 @private requestParams(headerRequestParams)
-  $requestParams = new RequestParamsHeaderDescriptor([
+    $requestParams = new RequestParamsHeaderDescriptor([
     @join headerRequestParam : @headerRequestParams
-      '{@headerRequestParam.fullyQualifiedName}' => $request->{@requestParamGetter(headerRequestParam.gettersChain)},
+        {@util.padding(4)}'{@headerRequestParam.fullyQualifiedName}' => $request->{@requestParamGetter(headerRequestParam.gettersChain)},
     @end
-  ]);
-  $optionalArgs['headers'] = isset($optionalArgs['headers'])
-      ? array_merge($requestParams->getHeader(), $optionalArgs['headers'])
-      : $requestParams->getHeader();
+    ]);
+    $optionalArgs['headers'] = isset($optionalArgs['headers'])
+        ? array_merge($requestParams->getHeader(), $optionalArgs['headers'])
+        : $requestParams->getHeader();
+
 @end
 
 @private requestParamGetter(gettersChain)
